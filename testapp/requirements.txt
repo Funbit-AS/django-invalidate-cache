@@ -1,0 +1,13 @@
+Django>=4.1,<4.3
+wagtail>=3.0,<4.3
+
+scriv
+
+# Testing
+pytest-django
+pytest-xdist
+requests-mock
+
+# Releasing/building
+build
+twine

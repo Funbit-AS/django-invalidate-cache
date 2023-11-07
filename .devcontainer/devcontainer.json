@@ -1,0 +1,67 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.224.3/containers/python-3
+{
+	"name": "Development Workspace",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"files.associations": {
+					"*.html": "html",
+					"**/templates/**/*.html": "django-html"
+				},
+				"emmet.includeLanguages": {
+					"django-html": "html"
+				},
+				"[python]": {
+					"editor.defaultFormatter": "charliermarsh.ruff",
+					"editor.rulers": [
+						88
+					],
+					"editor.codeActionsOnSave": {
+						"source.fixAll": true,
+						"source.organizeImports": true
+					}
+				},
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.languageServer": "Pylance",
+				"python.analysis.typeCheckingMode": "basic",
+				"python.formatting.provider": "none",
+				"python.testing.pytestEnabled": true,
+				"python.testing.pytestPath": "python -m pytest",
+				"editor.formatOnSave": true,
+				"editor.bracketPairColorization.enabled": true
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"charliermarsh.ruff",
+				"visualstudioexptteam.vscodeintellicode",
+				"github.vscode-pull-request-github",
+				"gitHub.copilot",
+				"GitHub.copilot-chat",
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				"thebarkman.vscode-djaneiro",
+				"batisteo.vscode-django",
+				"bradlc.vscode-tailwindcss",
+				"takumii.markdowntable",
+				"seatonjiang.gitmoji-vscode"
+			]
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		8000
+	],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "pip install --editable . && python testapp/manage.py migrate"
+	
+}
