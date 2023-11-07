@@ -2,7 +2,7 @@
 # make release
 
 # Reads version from pyproject.toml
-version := $(shell python -c 'import tomlib; print(tomlib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+version := $(shell python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
 
 .SILENT: release
 
