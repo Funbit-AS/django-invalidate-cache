@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-invalidate-cache"
-version = "1.0.0"
+version = "1.0.1"
 description = "Helpers for sending invalidate requests to a http endpoint (such as a nextjs api route)."
 readme = "README.md"
 authors = [{ "name" = "Funbit AS", "email" = "webmaster@funbit.no" }]

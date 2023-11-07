@@ -27,7 +27,7 @@ def register_signal_handlers():
 
 
 def signal_handler(sender, instance, **kwargs):
-    invalidate_cache(tag="pages")
+    invalidate_cache(tag="pages", fail_silently=True)
 ```
 
 ### Management Command

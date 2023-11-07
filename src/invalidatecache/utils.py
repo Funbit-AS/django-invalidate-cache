@@ -13,7 +13,21 @@ class InvalidateTagError(RequestException):
     pass
 
 
-def invalidate_tag(tag: str):
+def invalidate_tag(tag: str, fail_silently=False):
+    """
+    Invalidate a cache tag.
+
+    This function sends a POST request to a specified URL to invalidate a cache tag.
+    If the request fails, it logs the error and raises an InvalidateTagError unless
+    fail_silently is True.
+
+    Parameters:
+    tag (str): The cache tag to invalidate.
+    fail_silently (bool): Whether to suppress exceptions and only log an error.
+
+    Raises:
+    InvalidateTagError: If the request fails and fail_silently is False.
+    """
     cache_settings = getattr(settings, "DJANGO_CACHE_INVALIDATOR", {})
     url = cache_settings.get("URL", "")
     secret = cache_settings.get("SECRET", "")
@@ -28,6 +42,8 @@ def invalidate_tag(tag: str):
         r.raise_for_status()
     except requests.exceptions.RequestException as e:
         logger.error(f"Error invalidating cache for tag {tag}: {e}")
-        raise InvalidateTagError() from e
+        if not fail_silently:
+            raise InvalidateTagError() from e
 
-    logger.info(f"Successfully invalidated cache for tag {tag}")
+    else:
+        logger.info(f"Successfully invalidated cache for tag {tag}")
