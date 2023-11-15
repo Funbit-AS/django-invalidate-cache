@@ -1,4 +1,11 @@
 
+<a id='changelog-1.0.2'></a>
+# 1.0.2 — 2023-11-15
+
+## Fixed
+
+- Adds html files to package data.
+
 <a id='changelog-1.0.1'></a>
 # 1.0.1 — 2023-11-07
 
