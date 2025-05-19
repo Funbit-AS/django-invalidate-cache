@@ -26,6 +26,6 @@ def register_manual_cache_invalidation_menu_item():
     return ManualCache_invalidationMenuItem(
         "Manually invalidate cache",
         url=reverse("manual-cache-invalidation"),
-        classnames="icon icon-bin",
+        classname="icon icon-bin",
         order=10000,
     )
